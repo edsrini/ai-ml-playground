@@ -2,6 +2,10 @@
 
 Hands-on implementation of a reproducible machine learning workflow — the practices that let a team trust that a model in production can be traced back to the exact data, code, and parameters that produced it.
 
+## Origin
+
+Built while working through hands-on exercises from a structured MLOps curriculum, then restructured and documented here as a standalone project. The value is in the practices demonstrated below, not novel research.
+
 ## Skills demonstrated
 
 - **Artifact versioning** — logging datasets, cleaned data, and trained models as versioned, hash-deduplicated artifacts (Weights & Biases) instead of untracked local files
