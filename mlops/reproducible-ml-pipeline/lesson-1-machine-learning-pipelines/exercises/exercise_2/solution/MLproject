@@ -1,23 +1,33 @@
+# MLflow project manifest for the "download_data" pipeline step: declares
+# what environment it runs in, what parameters it accepts, and the exact
+# command used to invoke it. This is what makes the step runnable and
+# composable by other steps / an orchestrator without hardcoding a CLI call.
 name: download_data
-conda_env: conda.yml
+conda_env: conda.yml  # build the environment from the conda.yml next to this file
 
 entry_points:
+  # "main" is the default entry point, run when no other is specified.
   main:
     parameters:
       file_url:
         description: URL of the file to download
         type: uri
+
       artifact_name:
         description: Name for the W&B artifact that will be created
         type: str
+
       artifact_type:
         description: Type of the artifact to create
         type: str
-        default: raw_data
+        default: raw_data  # optional since it has a default; the rest are required
+
       artifact_description:
         description: Description for the artifact
         type: str
 
+    # ">-" folds this into one line at run time (trailing newline stripped),
+    # with each {param} substituted from the values passed to `mlflow run`.
     command: >-
       python download_data.py --file_url {file_url} \
                               --artifact_name {artifact_name} \
