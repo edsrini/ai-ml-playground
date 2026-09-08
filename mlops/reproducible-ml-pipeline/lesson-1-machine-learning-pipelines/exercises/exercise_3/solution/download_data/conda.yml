@@ -1,10 +1,20 @@
+# Conda environment definition for the "download_data" MLflow pipeline step.
+# MLflow creates this isolated, exactly-pinned environment fresh before
+# running the step, so the step's dependencies never conflict with any
+# other step's environment and the run is reproducible on any machine.
 name: download_data
+
+# Package channels, checked in order.
 channels:
-  - conda-forge
-  - defaults
+  - conda-forge  # community package repository, checked first
+  - defaults     # Anaconda's official channel, used as fallback
+
 dependencies:
+  # Packages installed via conda itself, each pinned to an exact version.
   - python=3.13
-  - requests=2.32.5
-  - pip=24.3.1
+  - requests=2.32.5  # HTTP library used to download the input file
+  - pip=24.3.1        # needed to install the pip-only packages below
+
+  # Packages installed via pip inside this same conda environment.
   - pip:
-      - wandb==0.24.0
+      - wandb==0.24.0  # pulled from PyPI instead of conda-forge for freshness
