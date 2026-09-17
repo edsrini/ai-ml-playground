@@ -4,9 +4,9 @@ from pathlib import Path
 
 sys.path.append(str(Path(__file__).resolve().parent.parent))
 
+from langchain.agents import create_agent
 from langchain_core.tools import tool
 from langchain_ollama import ChatOllama
-from langgraph.prebuilt import create_react_agent
 
 from config import OLLAMA_BASE_URL, OLLAMA_MODEL
 
@@ -19,7 +19,7 @@ def word_count(text: str) -> int:
 
 def main():
     llm = ChatOllama(model=OLLAMA_MODEL, base_url=OLLAMA_BASE_URL, temperature=0)
-    agent = create_react_agent(llm, tools=[word_count])
+    agent = create_agent(llm, tools=[word_count])
 
     result = agent.invoke(
         {
