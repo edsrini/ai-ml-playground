@@ -11,7 +11,7 @@ from config import OLLAMA_BASE_URL, OLLAMA_MODEL
 
 def main():
     llm = ChatOllama(model=OLLAMA_MODEL, base_url=OLLAMA_BASE_URL, temperature=0)
-    response = llm.invoke("In one sentence, what is LangGraph?")
+    response = llm.invoke("In one sentence, what is the capital of France?")
     print(response.content)
 
 
