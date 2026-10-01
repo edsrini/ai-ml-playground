@@ -1,9 +1,4 @@
-import sys
-from pathlib import Path
-
 from anyio.itertools import chain
-
-sys.path.append(str(Path(__file__).resolve().parent.parent))
 
 from langchain_ollama import ChatOllama
 from langchain_core.prompts import PromptTemplate

@@ -6,11 +6,9 @@ like "Thought: ...\\nResponse: ..." and hoping it complies, we define a schema a
 the model-provider's structured-output machinery enforce it.
 """
 import sys
-from pathlib import Path
 from typing import Annotated, List, TypedDict
 
 sys.stdout.reconfigure(encoding="utf-8")
-sys.path.append(str(Path(__file__).resolve().parent.parent))
 
 from langchain_classic.output_parsers import BooleanOutputParser, DatetimeOutputParser, OutputFixingParser
 from langchain_core.output_parsers import StrOutputParser

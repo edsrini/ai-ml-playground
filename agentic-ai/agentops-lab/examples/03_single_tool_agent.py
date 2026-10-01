@@ -1,9 +1,4 @@
 """A single-tool ReAct-style agent built with LangGraph, running on a local model."""
-import sys
-from pathlib import Path
-
-sys.path.append(str(Path(__file__).resolve().parent.parent))
-
 from langchain.agents import create_agent
 from langchain_core.tools import tool
 from langchain_ollama import ChatOllama

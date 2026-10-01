@@ -6,11 +6,9 @@ Hand-rolls the same tool-call loop that create_agent() did automatically in
 is what makes create_agent() no longer feel like a black box.
 """
 import sys
-from pathlib import Path
 from typing import TypedDict
 
 sys.stdout.reconfigure(encoding="utf-8")
-sys.path.append(str(Path(__file__).resolve().parent.parent))
 
 from langchain_core.messages import AnyMessage, HumanMessage, SystemMessage, ToolMessage
 from langchain_core.tools import tool

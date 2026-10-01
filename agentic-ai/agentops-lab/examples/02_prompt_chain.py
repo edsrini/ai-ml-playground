@@ -1,6 +1,5 @@
 """A prompt template + parser chain -- the LangChain fundamentals building block."""
 import sys
-from pathlib import Path
 
 import output
 import thought
@@ -8,7 +7,6 @@ from langchain_core.prompts import prompt, PromptTemplate, FewShotPromptTemplate
 from langgraph.channels import topic
 
 sys.stdout.reconfigure(encoding="utf-8")
-sys.path.append(str(Path(__file__).resolve().parent.parent))
 
 from langchain_core.messages import AIMessage, HumanMessage, SystemMessage
 from langchain_ollama import ChatOllama

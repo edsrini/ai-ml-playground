@@ -6,10 +6,8 @@ the deterministic check doubles as the baseline the LLMs are measured against.
 import sys
 import time
 from datetime import datetime
-from pathlib import Path
 
 sys.stdout.reconfigure(encoding="utf-8")
-sys.path.append(str(Path(__file__).resolve().parent.parent))
 
 from langchain_ollama import ChatOllama
 from pydantic import BaseModel, Field

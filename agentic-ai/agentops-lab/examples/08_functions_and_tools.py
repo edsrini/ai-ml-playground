@@ -5,10 +5,8 @@ step by step what "tool calling" actually does: the model doesn't run the
 function, it only asks for it to be run and with what arguments.
 """
 import sys
-from pathlib import Path
 
 sys.stdout.reconfigure(encoding="utf-8")
-sys.path.append(str(Path(__file__).resolve().parent.parent))
 
 from langchain_core.messages import HumanMessage, ToolMessage, SystemMessage
 from langchain_core.output_parsers.openai_tools import parse_tool_calls

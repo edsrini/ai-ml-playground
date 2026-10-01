@@ -9,7 +9,8 @@ Running exercises against an open model surfaces things a hosted frontier model 
 ## Setup
 
 ```bash
-pip install -r requirements.txt
+pip install -e .   # editable install (pyproject.toml) -- makes `config` importable
+                    # from every script under examples/ and chatbot/, no sys.path hacks
 ollama pull qwen3:4b   # or any model already available: ollama list
 ```
 

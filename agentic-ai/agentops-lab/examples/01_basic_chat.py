@@ -1,9 +1,4 @@
 """Minimal call to a local open-weight model through LangChain."""
-import sys
-from pathlib import Path
-
-sys.path.append(str(Path(__file__).resolve().parent.parent))
-
 from langchain_ollama import ChatOllama
 
 from config import OLLAMA_BASE_URL, OLLAMA_MODEL

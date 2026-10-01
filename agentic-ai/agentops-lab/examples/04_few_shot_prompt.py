@@ -1,9 +1,7 @@
 """Few-shot prompting -- teach a response format (Question/Thought/Response) via worked examples."""
 import sys
-from pathlib import Path
 
 sys.stdout.reconfigure(encoding="utf-8")
-sys.path.append(str(Path(__file__).resolve().parent.parent))
 
 from langchain_core.prompts import FewShotPromptTemplate, PromptTemplate
 from langchain_ollama import ChatOllama
