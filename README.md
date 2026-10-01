@@ -7,7 +7,8 @@ A personal collection of AI/ML projects — hands-on implementations exploring m
 | Project | Description |
 |---|---|
 | [`mlops/reproducible-ml-pipeline`](mlops/reproducible-ml-pipeline) | A reproducible ML pipeline covering artifact versioning, data validation, experiment tracking, and pipeline orchestration with MLflow and Weights & Biases |
-| [`agentic-ai/agentops-lab`](agentic-ai/agentops-lab) | LangChain/LangGraph exercises run against local open-weight models via Ollama, comparing agent reliability against hosted frontier models |
+| [`agentic-ai/agentic-ai-ollama`](agentic-ai/agentic-ai-ollama) | LangChain/LangGraph exercises run against local open-weight models via Ollama, comparing agent reliability against hosted frontier models |
+| [`agentic-ai/ai-business-advisor`](agentic-ai/ai-business-advisor) | Multi-step LCEL workflow: industry → business idea → analysis → structured report |
 
 ---
 
