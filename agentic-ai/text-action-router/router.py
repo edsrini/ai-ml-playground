@@ -6,7 +6,7 @@ wire_routing_nodes(); they differ only in how the action is decided before that 
 import random
 import sys
 from pathlib import Path
-from typing import TypedDict
+from typing import Literal, TypedDict
 
 sys.stdout.reconfigure(encoding="utf-8")
 
@@ -38,13 +38,20 @@ def upper_node(state: RouterState) -> RouterState:
 def invalid_node(state: RouterState) -> RouterState:
     return {"result": f"Invalid action: '{state['action']}'. Valid actions: reverse, upper."}  # graceful fallback, no crash
 
+# Router node: normalizes the given action (so " Reverse " still matches) and writes it back to state.
+def route_request(state: RouterState) -> RouterState:
+    return {"action": state["action"].strip().lower()}
+
+
 workflowLLM = StateGraph(state_schema=RouterState)
 
+workflowLLM.add_node("router", route_request)  # entry node: cleans up the action before routing
 workflowLLM.add_node("reverse", reverse_node)
 workflowLLM.add_node("upper", upper_node)
 workflowLLM.add_node("invalid", invalid_node)
 
 
+# Routing function (not a node): only reads state["action"] and returns the next node's name.
 def route_action(state: RouterState) -> str:
     if state["action"] == "reverse":
         return "reverse"
@@ -53,8 +60,9 @@ def route_action(state: RouterState) -> str:
     return "invalid"
 
 
+workflowLLM.add_edge(START, "router")  # always enter through the router node first
 workflowLLM.add_conditional_edges(
-    source= START,
+    source= "router",  # branch after the router node, instead of straight from START
     path= route_action,
     path_map= ["reverse", "upper", "invalid"]
 )
@@ -93,4 +101,58 @@ result = routergraph.invoke(
     }
 )
 print("upper:", result)
+
+
+# --- Second graph: an LLM reasons about free text first, then the same conditional edge routes on its answer ---
+
+class RouterStateLLM(RouterState):
+    user_input: str  # the raw free-form message, before the LLM turns it into action/text
+
+
+class Intent(BaseModel):
+    action: Literal["reverse", "upper", "invalid"] = Field(
+        description="'reverse' or 'upper' if the user clearly asked for one of those text operations, otherwise 'invalid'"
+    )
+    text: str = Field(description="The text the user wants the operation applied to")
+
+
+llm = ChatOllama(model=OLLAMA_MODEL, base_url=OLLAMA_BASE_URL, temperature=0, num_ctx=8192)
+classifier_llm = llm.with_structured_output(Intent)
+
+
+def classify_node(state: RouterStateLLM) -> RouterStateLLM:  # must be typed RouterStateLLM, or user_input gets filtered out
+    # The LLM reasons here and returns a decision as data (action, text) -- it has no
+    # idea "reverse_node" or "upper_node" exist. route_action below is what actually
+    # picks the next node, by reading this data, not by anything the LLM controls.
+    intent = classifier_llm.invoke(f"Classify this request and extract the target text: {state['user_input']}")
+    return {"action": intent.action, "text": intent.text}
+
+
+workflowWithLLM = StateGraph(state_schema=RouterStateLLM)
+
+workflowWithLLM.add_node("classify", classify_node)
+workflowWithLLM.add_node("reverse", reverse_node)
+workflowWithLLM.add_node("upper", upper_node)
+workflowWithLLM.add_node("invalid", invalid_node)
+
+workflowWithLLM.add_edge(START, "classify")
+workflowWithLLM.add_conditional_edges(
+    source="classify",
+    path=route_action,  # same routing function as the graph above -- it only ever reads state["action"]
+    path_map=["reverse", "upper", "invalid"]
+)
+workflowWithLLM.add_edge("reverse", END)
+workflowWithLLM.add_edge("upper", END)
+workflowWithLLM.add_edge("invalid", END)
+
+routergraph_llm = workflowWithLLM.compile()
+
+result = routergraph_llm.invoke(input={"user_input": "please reverse hello"})
+print("llm reverse:", result)
+
+result = routergraph_llm.invoke(input={"user_input": "make hello uppercase"})
+print("llm upper:", result)
+
+result = routergraph_llm.invoke(input={"user_input": "what's the weather like?"})
+print("llm invalid:", result)
 
