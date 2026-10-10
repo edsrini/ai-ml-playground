@@ -1,7 +1,7 @@
 """Structured output -- force the model to return a typed object instead of free text.
 
 This directly addresses the format-adherence failures from the few-shot experiments
-(examples/04_few_shot_prompt.py): instead of asking the model to follow a text pattern
+(langchain_langgraph_labs/04_few_shot_prompt.py): instead of asking the model to follow a text pattern
 like "Thought: ...\\nResponse: ..." and hoping it complies, we define a schema and let
 the model-provider's structured-output machinery enforce it.
 """

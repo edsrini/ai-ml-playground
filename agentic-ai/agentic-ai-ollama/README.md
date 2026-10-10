@@ -10,7 +10,7 @@ Running exercises against an open model surfaces things a hosted frontier model 
 
 ```bash
 pip install -e .   # editable install (pyproject.toml) -- makes `config` importable
-                    # from every script under examples/ and chatbot/, no sys.path hacks
+                    # from every script under langchain_langgraph_labs/ and chatbot/, no sys.path hacks
 ollama pull qwen3:4b   # or any model already available: ollama list
 ```
 
@@ -25,23 +25,25 @@ OLLAMA_MODEL=llama3.2:1b
 
 | File | Covers |
 |---|---|
-| [`examples/01_basic_chat.py`](examples/01_basic_chat.py) | Direct chat call to a local model |
-| [`examples/02_prompt_chain.py`](examples/02_prompt_chain.py) | Prompt template + output parser chain |
-| [`examples/03_single_tool_agent.py`](examples/03_single_tool_agent.py) | LangGraph ReAct agent with one bound tool (`create_agent`) |
-| [`examples/04_few_shot_prompt.py`](examples/04_few_shot_prompt.py) | Few-shot prompting via worked examples |
-| [`examples/05_structured_output.py`](examples/05_structured_output.py) | Schema-enforced output instead of free text |
-| [`examples/06_model_comparison.py`](examples/06_model_comparison.py) | Scoring local models against a deterministic baseline |
-| [`examples/07_multistep_workflow.py`](examples/07_multistep_workflow.py) | LCEL runnables: chains, batch, stream, parallel |
-| [`examples/08_functions_and_tools.py`](examples/08_functions_and_tools.py) | Manual tool-binding mechanics behind `create_agent` |
-| [`examples/09_langgraph_basics.py`](examples/09_langgraph_basics.py) | Hand-rolled ReAct loop: custom state, conditional edges |
-| [`examples/09_langgraph_workflow.py`](examples/09_langgraph_workflow.py) | Deterministic graph vs. an LLM-backed graph, side by side |
+| [`langchain_langgraph_labs/01_basic_chat.py`](langchain_langgraph_labs/01_basic_chat.py) | Direct chat call to a local model |
+| [`langchain_langgraph_labs/02_prompt_chain.py`](langchain_langgraph_labs/02_prompt_chain.py) | Prompt template + output parser chain |
+| [`langchain_langgraph_labs/03_single_tool_agent.py`](langchain_langgraph_labs/03_single_tool_agent.py) | LangGraph ReAct agent with one bound tool (`create_agent`) |
+| [`langchain_langgraph_labs/04_few_shot_prompt.py`](langchain_langgraph_labs/04_few_shot_prompt.py) | Few-shot prompting via worked examples |
+| [`langchain_langgraph_labs/05_structured_output.py`](langchain_langgraph_labs/05_structured_output.py) | Schema-enforced output instead of free text |
+| [`langchain_langgraph_labs/06_model_comparison.py`](langchain_langgraph_labs/06_model_comparison.py) | Scoring local models against a deterministic baseline |
+| [`langchain_langgraph_labs/07_multistep_workflow.py`](langchain_langgraph_labs/07_multistep_workflow.py) | LCEL runnables: chains, batch, stream, parallel |
+| [`langchain_langgraph_labs/08_functions_and_tools.py`](langchain_langgraph_labs/08_functions_and_tools.py) | Manual tool-binding mechanics behind `create_agent` |
+| [`langchain_langgraph_labs/09_langgraph_basics.py`](langchain_langgraph_labs/09_langgraph_basics.py) | Hand-rolled ReAct loop: custom state, conditional edges |
+| [`langchain_langgraph_labs/09_langgraph_workflow.py`](langchain_langgraph_labs/09_langgraph_workflow.py) | Deterministic graph vs. an LLM-backed graph, side by side |
+| [`langchain_langgraph_labs/10_thread_isolation.py`](langchain_langgraph_labs/10_thread_isolation.py) | Checkpointer demos: thread isolation, config vs state, time travel, per-user memory |
+| [`langchain_langgraph_labs/11_llm_preference_memory.py`](langchain_langgraph_labs/11_llm_preference_memory.py) | LLM node extracts food preferences from natural language; code validates and remembers them |
 
 Run any example directly:
 
 ```bash
-python examples/01_basic_chat.py
+python langchain_langgraph_labs/01_basic_chat.py
 ```
 
 ## Roadmap
 
-Further exercises (multi-tool planning, RAG, memory, multi-agent collaboration) get added as separate `NN_*.py` files under `examples/` as the corresponding course lessons are worked through.
+Further exercises (multi-tool planning, RAG, memory, multi-agent collaboration) get added as separate `NN_*.py` files under `langchain_langgraph_labs/` as the corresponding course lessons are worked through.
