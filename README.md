@@ -24,6 +24,12 @@ Hands-on projects in **MLOps** and **agentic AI**: reproducible ML pipelines, an
 |---|---|
 | [`mlops/reproducible-ml-pipeline`](mlops/reproducible-ml-pipeline) | Artifact versioning, data validation, experiment tracking and pipeline orchestration with MLflow and Weights & Biases |
 
+## Deep Learning (PyTorch)
+
+| Project | What it shows |
+|---|---|
+| [`deep-learning`](deep-learning) | PyTorch exercises from logic gates to multi-layer networks, training and validation loops, tuning; plus a character-level GPT built from scratch (`tiny-gpt`, not yet run end to end) |
+
 ## Notes
 
 - Many projects began as exercises from Udacity's Agentic AI Engineer (LangChain / LangGraph) and MLOps courses, then were extended and documented here.
