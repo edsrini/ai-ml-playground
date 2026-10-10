@@ -1,18 +1,34 @@
 # AI/ML Playground
 
-A personal collection of AI/ML projects — hands-on implementations exploring machine learning workflows, tooling, and practices.
+Hands-on projects in **MLOps** and **agentic AI**: reproducible ML pipelines, and LangChain / LangGraph agents running on local open-weight models (Ollama).
 
-## Projects
+## Start here
 
-| Project | Description |
+- **[`agentic-ai/agentic-ai-ollama`](agentic-ai/agentic-ai-ollama)** is the main agentic AI work. Numbered labs cover prompting, structured output, tool calling, LangGraph state graphs, checkpointer memory, time travel, and an LLM node with plain-code validation around it.
+- **[`mlops/reproducible-ml-pipeline`](mlops/reproducible-ml-pipeline)** is the MLOps work: a reproducible pipeline with data validation, artifact versioning, experiment tracking, and a tagged release.
+
+## Agentic AI (LangChain / LangGraph)
+
+| Project | What it shows |
 |---|---|
-| [`mlops/reproducible-ml-pipeline`](mlops/reproducible-ml-pipeline) | A reproducible ML pipeline covering artifact versioning, data validation, experiment tracking, and pipeline orchestration with MLflow and Weights & Biases |
-| [`agentic-ai/agentic-ai-ollama`](agentic-ai/agentic-ai-ollama) | LangChain/LangGraph exercises run against local open-weight models via Ollama, comparing agent reliability against hosted frontier models |
-| [`agentic-ai/ai-business-advisor`](agentic-ai/ai-business-advisor) | Multi-step LCEL workflow: industry → business idea → analysis → structured report |
-| [`agentic-ai/text-action-router`](agentic-ai/text-action-router) | LangGraph conditional routing: dispatch to reverse/upper nodes by action, with graceful handling of invalid actions |
-| [`agentic-ai/customer-service-state`](agentic-ai/customer-service-state) | LangGraph state schema: reducers (`add_messages`, `operator.add`), department routing, and per-thread memory with a checkpointer |
-| [`agentic-ai/ai-library-assistant`](agentic-ai/ai-library-assistant) | Library assistant as a LangGraph workflow (borrow/return/overdue), plus a tool-calling agent version and a one-command class bootstrap |
-| [`agentic-ai/claims-issue-diagnosis`](agentic-ai/claims-issue-diagnosis) | Read-only agent that diagnoses synthetic claims-ingestion failures: LLM triage and diagnosis, deterministic evidence gathering and escalation |
+| [`agentic-ai/agentic-ai-ollama`](agentic-ai/agentic-ai-ollama) | Labs 01-11 on local models: chains, few-shot, structured output, tools, graphs, memory, LLM-assisted extraction |
+| [`agentic-ai/ai-library-assistant`](agentic-ai/ai-library-assistant) | A library assistant as a LangGraph workflow and as a tool-calling agent, with a one-command `bootstrap.py` setup |
+| [`agentic-ai/customer-service-state`](agentic-ai/customer-service-state) | State schema and reducers (`add_messages`, `operator.add`), department routing, per-thread memory |
+| [`agentic-ai/text-action-router`](agentic-ai/text-action-router) | Conditional-edge routing with graceful handling of invalid actions |
+| [`agentic-ai/ai-business-advisor`](agentic-ai/ai-business-advisor) | Multi-step LCEL workflow: industry, business idea, analysis, structured report |
+| [`agentic-ai/claims-issue-diagnosis`](agentic-ai/claims-issue-diagnosis) | Prototype: read-only agent that diagnoses synthetic claims-ingestion failures. The evidence checks are tested; the LLM triage and diagnosis steps have not been evaluated yet |
+
+## MLOps
+
+| Project | What it shows |
+|---|---|
+| [`mlops/reproducible-ml-pipeline`](mlops/reproducible-ml-pipeline) | Artifact versioning, data validation, experiment tracking and pipeline orchestration with MLflow and Weights & Biases |
+
+## Notes
+
+- Many projects began as exercises from Udacity's Agentic AI Engineer (LangChain / LangGraph) and MLOps courses, then were extended and documented here.
+- All data is synthetic. No real claims, members, or personal information.
+- Small local models are less reliable than hosted ones, so the code keeps exact decisions (validation, updates, escalation) in plain Python and uses the LLM for reading language.
 
 ---
 
