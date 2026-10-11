@@ -60,9 +60,9 @@ def remember_preferences(state: MemoryState) -> MemoryState:
         # Suggest a dish based on the first preference listed
         if "vegan" in diet:
             state["messages"].append(f"{BOT}May I recommend our vegan Buddha bowl?")
-        elif "vegetarian" in diet:
+        if "vegetarian" in diet:
             state["messages"].append(f"{BOT}How about a fresh vegetarian salad?")
-        elif "gluten-free" in diet:
+        if "gluten-free" in diet:
             state["messages"].append(f"{BOT}Try our gluten-free pasta.")
 
     return state
@@ -100,4 +100,4 @@ result2 = app.invoke(saved_state, config=config)
 print("Second interaction - User Memory:", result2["user_memory"])
 # Expected: {'diet': ['vegan', 'gluten-free'], 'visits': 2}
 
-print("Second interaction - Messages:", result2["messages"])
+print("Second interaction - Messages:", result2["messages"][-2:])
