@@ -14,6 +14,7 @@ Hands-on projects in **MLOps** and **agentic AI**: reproducible ML pipelines, an
 | [`agentic-ai/agentic-ai-ollama`](agentic-ai/agentic-ai-ollama) | Labs 01-11 on local models: chains, few-shot, structured output, tools, graphs, memory, LLM-assisted extraction |
 | [`agentic-ai/ai-library-assistant`](agentic-ai/ai-library-assistant) | A library assistant as a LangGraph workflow and as a tool-calling agent, with a one-command `bootstrap.py` setup |
 | [`agentic-ai/customer-service-state`](agentic-ai/customer-service-state) | State schema and reducers (`add_messages`, `operator.add`), department routing, per-thread memory |
+| [`agentic-ai/ai-meal-suggester`](agentic-ai/ai-meal-suggester) | Per-user memory with a checkpointer: remembers diet preferences across runs, welcomes returning visitors, isolates users by `thread_id` |
 | [`agentic-ai/text-action-router`](agentic-ai/text-action-router) | Conditional-edge routing with graceful handling of invalid actions |
 | [`agentic-ai/ai-business-advisor`](agentic-ai/ai-business-advisor) | Multi-step LCEL workflow: industry, business idea, analysis, structured report |
 | [`agentic-ai/claims-issue-diagnosis`](agentic-ai/claims-issue-diagnosis) | Prototype: read-only agent that diagnoses synthetic claims-ingestion failures. The evidence checks are tested; the LLM triage and diagnosis steps have not been evaluated yet |
