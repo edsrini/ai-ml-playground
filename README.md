@@ -15,6 +15,8 @@ Hands-on projects in **MLOps** and **agentic AI**: reproducible ML pipelines, an
 | [`agentic-ai/ai-library-assistant`](agentic-ai/ai-library-assistant) | A library assistant as a LangGraph workflow and as a tool-calling agent, with a one-command `bootstrap.py` setup |
 | [`agentic-ai/customer-service-state`](agentic-ai/customer-service-state) | State schema and reducers (`add_messages`, `operator.add`), department routing, per-thread memory |
 | [`agentic-ai/ai-meal-suggester`](agentic-ai/ai-meal-suggester) | Per-user memory with a checkpointer: remembers diet preferences across runs, welcomes returning visitors, isolates users by `thread_id` |
+| [`agentic-ai/text2sql-agent`](agentic-ai/text2sql-agent) | Text-to-SQL agent on a local model: schema-aware tools, read-only SQL guard, errors returned as data, pytest suite |
+| [`agentic-ai/log-search-lab`](agentic-ai/log-search-lab) | Local Elasticsearch + Kibana with 1M synthetic logs, guarded log-search tools, and a local-model agent that finds the cause of an incident (same structure as text2sql-agent) |
 | [`agentic-ai/text-action-router`](agentic-ai/text-action-router) | Conditional-edge routing with graceful handling of invalid actions |
 | [`agentic-ai/ai-business-advisor`](agentic-ai/ai-business-advisor) | Multi-step LCEL workflow: industry, business idea, analysis, structured report |
 | [`agentic-ai/claims-issue-diagnosis`](agentic-ai/claims-issue-diagnosis) | Prototype: read-only agent that diagnoses synthetic claims-ingestion failures. The evidence checks are tested; the LLM triage and diagnosis steps have not been evaluated yet |

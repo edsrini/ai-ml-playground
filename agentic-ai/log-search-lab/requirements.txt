@@ -1,0 +1,6 @@
+elasticsearch==9.5.1
+langchain==1.4.3
+langchain-ollama==1.1.0
+langgraph==1.2.12
+python-dotenv==1.2.4
+pytest
