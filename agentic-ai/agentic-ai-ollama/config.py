@@ -8,3 +8,4 @@ load_dotenv()
 # Available locally at time of setup: qwen3:4b, deepseek-r1:latest, llama3.2:1b
 OLLAMA_MODEL = os.getenv("OLLAMA_MODEL", "qwen3:4b")
 OLLAMA_BASE_URL = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
+OLLAMA_EMBED_MODEL = os.getenv("OLLAMA_EMBED_MODEL", "nomic-embed-text")  # makes vectors for RAG; not a chat model

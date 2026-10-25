@@ -16,6 +16,11 @@ dependencies = [
     "sqlalchemy",
     "pandas",
     "elasticsearch",
+    "mlflow",
+    "langchain-chroma",
+    "langchain-community",
+    "pypdf",
+    "fpdf2",
 ]
 
 [tool.setuptools]

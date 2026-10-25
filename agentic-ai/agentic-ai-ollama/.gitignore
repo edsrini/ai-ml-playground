@@ -5,3 +5,4 @@ __pycache__/
 output/
 *.egg-info/
 *.db
+langchain_langgraph_labs/data/*.pdf
