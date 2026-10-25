@@ -1,0 +1,22 @@
+# Standalone MLflow tracking server from the official image: no Dockerfile, nothing to build.
+# Runs, parameters and metrics go in a SQLite file; artifacts are stored by the server under ./mlruns, so clients
+# outside the container can log artifacts through it. Everything lives in this folder, on F:.
+services:
+  mlflow:
+    image: ghcr.io/mlflow/mlflow:v3.8.1
+    container_name: mlflow_server
+    command: >
+      mlflow server
+      --host 0.0.0.0 --port 5000
+      --backend-store-uri sqlite:////mlflow/mlruns/mlflow.db
+      --artifacts-destination /mlflow/mlruns/artifacts
+      --serve-artifacts
+    ports:
+      - "127.0.0.1:5000:5000"   # this computer only: the server has no login
+    volumes:
+      - ./mlruns:/mlflow/mlruns
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:5000/health')"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
