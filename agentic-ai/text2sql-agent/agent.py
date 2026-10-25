@@ -4,11 +4,12 @@ Usage:  python agent.py "Which model earned the most revenue?"
 """
 import os
 import sys
+from typing import Annotated, TypedDict
 
 import truststore
 
 truststore.inject_into_ssl()  # trust the Windows certificate store so HTTPS (mermaid.ink) works
-from langchain_core.messages import SystemMessage, HumanMessage
+from langchain_core.messages import AnyMessage, SystemMessage, HumanMessage
 from langchain.agents import create_agent
 from langchain_ollama import ChatOllama
 
@@ -17,7 +18,7 @@ from tools import TOOLS
 from dotenv import load_dotenv
 
 from langgraph.graph import START, END, StateGraph
-from message import MessagesState  # our own copy of langgraph's MessagesState (see message.py)
+from langgraph.graph.message import add_messages
 from langgraph.prebuilt import ToolNode
 from IPython.display import Image, display
 from sqlalchemy import create_engine
@@ -54,7 +55,8 @@ llm = ChatOllama(
 #response = llm.invoke("What's Pokemon?")
 #print(repr(response))  # repr shows AIMessage(content='...', ...) like a notebook cell; print(response.content) shows only the text
 
-class State(MessagesState):
+class State(TypedDict):
+    messages: Annotated[list[AnyMessage], add_messages]  # add_messages appends each node's messages to the list
     user_query: str
 
 workflow = StateGraph(State)
@@ -79,8 +81,12 @@ def message_builder(state: State):
         "capitalised differently. "
         "If a query returns no rows, try a broader one (for example LIKE '%word%') before saying nothing exists. "
         "If a tool returns an error, fix the query and retry; if you still cannot get data, say so. "
-        "Never guess or invent a result: answer only from the rows returned. Always answer in English."
-        "Provide all the information across all relevant tables if needed like orders, issues, returns etc"
+        "Never guess or invent a result: answer only from the rows returned. Always answer in English. "
+        "Provide all the information across all relevant tables if needed like orders, issues, returns etc. "
+        # Scope rules, added after "Why did zillow homebuying algo failed?" got an invented answer from the issues table:
+        "This database only holds online-store data: sales, orders, payments, returns, issues, users and products. "
+        "If the question is not about that data, reply that this database cannot answer it and do not run any query. "
+        "If the rows returned do not actually answer the question, say so plainly instead of linking them to it."
     )
     messages = [
         SystemMessage(dba_sys_msg),
@@ -138,10 +144,15 @@ inputs = {
     "user_query": "Pull all the information related Ravi Stone, I also want to see information related to orders for this user and related issue. Please fix the issue."
 }
 
+inputs1 = {
+    "user_query": "Why did zillow homebuying algo failed?"
+}
+
 messages = react_graph.invoke(
-    input=inputs,
+    input=inputs1,
     config=config
 )
 
 for message in messages["messages"]:
     message.pretty_print()
+
