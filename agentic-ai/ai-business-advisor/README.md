@@ -2,7 +2,7 @@
 
 A multi-step [LCEL](https://python.langchain.com/docs/concepts/lcel/) workflow that helps brainstorm and evaluate business ideas, running on a local open model through [Ollama](https://ollama.com).
 
-Built as an exercise from Udacity's Agentic AI Engineer with LangChain and LangGraph Nanodegree (ND901).
+Built as a course exercise in agentic AI with LangChain and LangGraph.
 
 ## Workflow
 
