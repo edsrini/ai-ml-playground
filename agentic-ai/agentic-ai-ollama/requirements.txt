@@ -16,3 +16,9 @@ langchain-chroma
 langchain-community
 pypdf
 fpdf2
+ragas
+datasets<5
+pyarrow>=21,<23
+langgraph-checkpoint-postgres
+psycopg[binary]
+langmem

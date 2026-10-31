@@ -9,3 +9,6 @@ load_dotenv()
 OLLAMA_MODEL = os.getenv("OLLAMA_MODEL", "qwen3:4b")
 OLLAMA_BASE_URL = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
 OLLAMA_EMBED_MODEL = os.getenv("OLLAMA_EMBED_MODEL", "nomic-embed-text")  # makes vectors for RAG; not a chat model
+# The judge that grades answers in the evaluation labs: a separate, stronger non-thinking model, so the model being
+# evaluated (OLLAMA_MODEL) and the model grading it are never the same.
+OLLAMA_JUDGE_MODEL = os.getenv("OLLAMA_JUDGE_MODEL", "qwen3:30b-a3b-instruct-2507-q4_K_M")

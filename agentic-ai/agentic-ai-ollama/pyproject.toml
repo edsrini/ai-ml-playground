@@ -21,6 +21,12 @@ dependencies = [
     "langchain-community",
     "pypdf",
     "fpdf2",
+    "ragas",
+    "datasets<5",          # datasets 5 needs a newer pyarrow than mlflow allows
+    "pyarrow>=21,<23",
+    "langgraph-checkpoint-postgres",
+    "psycopg[binary]",
+    "langmem",
 ]
 
 [tool.setuptools]
