@@ -22,3 +22,5 @@ pyarrow>=21,<23
 langgraph-checkpoint-postgres
 psycopg[binary]
 langmem
+mcp<2
+langchain-mcp-adapters
