@@ -1,0 +1,3 @@
+# Leave notebooks out of GitHub's language stats.
+# A few course notebooks carry megabytes of saved profiling output, which would otherwise outweigh all the Python.
+*.ipynb linguist-vendored
