@@ -1,12 +1,11 @@
 # Deep Learning
 
-PyTorch exercises, from a single neuron up to multi-layer networks, plus a small GPT trained from scratch.
+PyTorch exercises, from a single neuron up to multi-layer networks.
 
 | Folder | What's in it |
 |---|---|
-| [`linear-function`](linear-function) | First steps: logic-gate learning (`ANGGate.py`) and a small regression (`MoviePromotion.py`) with `torch.nn` |
+| [`linear-function`](linear-function) | First steps: logic-gate learning (`ANDGate.py`) and a small regression (`MoviePromotion.py`) with `torch.nn` |
 | [`linear-model`](linear-model) | The main PyTorch exercises: logic gates (AND, XOR), a first multi-layer perceptron, loss functions, datasets and `DataLoader`, training and validation loops, evaluation strategy, tuning model performance, debugging tensor shapes, z-score normalization, and applied examples (`DynamicCarPricing.py`, `GreenHouse.py`) |
-| [`tiny-gpt`](tiny-gpt) | A character-level GPT (about 10M parameters) built and trained from scratch on Tiny Shakespeare. Not yet run end to end |
 
 ## Running the exercises
 
