@@ -15,6 +15,7 @@ START -> message_builder -> log_agent -> (tool call?) -> log_tools -> back to lo
 | `message.py` | `message.py` | Our own copy of langgraph's `MessagesState` |
 | `test_tools.py` | `test_tools.py` | 8 tests with a stub client: no server and no LLM needed |
 | `docker-compose.yml` | none | Elasticsearch 9.5.5 and Kibana 9.5.5 on `127.0.0.1`, security off (local only) |
+| `stack.ps1` | none | Windows helper to start, stop and check the stack (and optionally Docker Desktop and Ollama) |
 
 ## Run
 
@@ -28,6 +29,20 @@ pytest
 ```
 
 Kibana is at http://localhost:5601. Open **Discover** directly (http://localhost:5601/app/discover). The `app-logs` data view and two saved searches (*Errors only*, *DB timeouts*) are already created, and the time range defaults to 1-15 Oct 2026.
+
+## Start and stop the stack (Windows)
+
+`stack.ps1` wraps the Docker steps. It starts Docker Desktop if the engine is down, runs `docker compose up -d`, and waits until Elasticsearch and Kibana answer.
+
+```powershell
+.\stack.ps1 status            # what is running, with the URLs
+.\stack.ps1 start             # Docker Desktop if needed, then Elasticsearch and Kibana
+.\stack.ps1 start -Ollama     # ... and the Ollama server for the local model
+.\stack.ps1 stop              # stop the containers; the logs stay in the esdata volume
+.\stack.ps1 stop -Quit        # ... and quit Docker Desktop and shut WSL down to free memory
+```
+
+If PowerShell blocks the script, run it as `powershell -ExecutionPolicy Bypass -File .\stack.ps1 status`. When `docker` is not on the PATH, the script falls back to a Docker Desktop install folder set near its top; change that path to match your machine.
 
 ## The hidden incidents
 
