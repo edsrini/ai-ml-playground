@@ -11,7 +11,25 @@ Two projects that show the approach best: a local model handles the language, an
 - **[`agentic-ai/text2sql-agent`](agentic-ai/text2sql-agent)**: ask a database questions in plain English. Schema-aware tools, a read-only SQL guard, errors returned as data, 21 deterministic tests.
 - **[`agentic-ai/log-search-lab`](agentic-ai/log-search-lab)**: an agent that investigates an incident across 1M synthetic logs in a local Elasticsearch + Kibana stack, using guarded search tools.
 
-The groundwork behind them is in [`agentic-ai/agentic-ai-ollama`](agentic-ai/agentic-ai-ollama) (numbered LangChain / LangGraph labs) and [`mlops/reproducible-ml-pipeline`](mlops/reproducible-ml-pipeline) (data validation, artifact versioning, experiment tracking, a tagged release).
+### Also in this repo
+
+**Multi-agent systems**
+- [`agentic-ai/agentic-ai-blog-post`](agentic-ai/agentic-ai-blog-post): a five-stage blog pipeline (intake, research, writer, reviewer, publisher) of tool-using agents with Tavily web search, SEO scoring and Markdown linting; also rebuilt as a plain LCEL chain for comparison.
+- [`agentic-ai/agentic-ai-healthcare-appointment-system`](agentic-ai/agentic-ai-healthcare-appointment-system): a supervisor graph that coordinates doctor availability, patient verification, booking and notifications, with retries.
+- [`agentic-ai/multi-agent-orchestration-demo`](agentic-ai/multi-agent-orchestration-demo): a supervisor agent that calls a research agent and a writer agent as tools.
+
+**Agents, RAG and memory**
+- [`agentic-ai/ai-knowledgebase-agent`](agentic-ai/ai-knowledgebase-agent): documents in a saved Chroma store, search and web-fallback tools, answers that cite their sources.
+- [`agentic-ai/claims-issue-diagnosis`](agentic-ai/claims-issue-diagnosis): a read-only agent that diagnoses synthetic claims-ingestion failures, with tested evidence checks.
+- [`agentic-ai/ai-library-assistant`](agentic-ai/ai-library-assistant): the same library assistant built as a LangGraph workflow and as a tool-calling agent.
+- [`agentic-ai/ai-meal-suggester`](agentic-ai/ai-meal-suggester) and [`agentic-ai/customer-service-state`](agentic-ai/customer-service-state): per-user memory, state reducers and routing.
+- [`agentic-ai/text-action-router`](agentic-ai/text-action-router) and [`agentic-ai/ai-business-advisor`](agentic-ai/ai-business-advisor): conditional routing and a multi-step LCEL workflow.
+
+**Foundations**
+- [`agentic-ai/agentic-ai-ollama`](agentic-ai/agentic-ai-ollama): 20 numbered LangChain / LangGraph labs, from a first chat call to agentic RAG, human-in-the-loop, RAGAS evaluation and long-term memory in PostgreSQL; plus a small chatbot with memory and a persona.
+- [`mlops/reproducible-ml-pipeline`](mlops/reproducible-ml-pipeline): data validation, artifact versioning, experiment tracking and a tagged release with MLflow and Weights & Biases.
+- [`mlops/mlflow-server`](mlops/mlflow-server): a standalone MLflow tracking server in Docker.
+- [`deep-learning`](deep-learning): PyTorch exercises from logic gates to multi-layer networks, training loops and tuning.
 
 ## Tools used
 
@@ -36,6 +54,8 @@ The groundwork behind them is in [`agentic-ai/agentic-ai-ollama`](agentic-ai/age
 | [`agentic-ai/text2sql-agent`](agentic-ai/text2sql-agent) | Text-to-SQL agent on a local model: schema-aware tools, read-only SQL guard, errors returned as data, pytest suite |
 | [`agentic-ai/ai-knowledgebase-agent`](agentic-ai/ai-knowledgebase-agent) | Skeleton of a knowledge-base agent: documents loaded into a saved Chroma store, search and web-fallback tools, a local-model agent that cites its sources (same structure as text2sql-agent) |
 | [`agentic-ai/log-search-lab`](agentic-ai/log-search-lab) | Local Elasticsearch + Kibana with 1M synthetic logs, guarded log-search tools, and a local-model agent that finds the cause of an incident (same structure as text2sql-agent) |
+| [`agentic-ai/agentic-ai-blog-post`](agentic-ai/agentic-ai-blog-post) | Blog-writing pipeline of five tool-using agents (intake, research, writer, reviewer, publisher): Tavily search, reference formatting, read time, Markdown lint and SEO score; an extended version with Pydantic-typed state, and the same pipeline as a plain LCEL chain |
+| [`agentic-ai/multi-agent-orchestration-demo`](agentic-ai/multi-agent-orchestration-demo) | Supervisor pattern in miniature: a coordinating agent calls a research agent and a writer agent as tools |
 | [`agentic-ai/agentic-ai-healthcare-appointment-system`](agentic-ai/agentic-ai-healthcare-appointment-system) | Supervisor (coordinator) graph: doctor availability, patient verification, booking and notifications as separate agents, with retries routed through one coordinator |
 | [`agentic-ai/text-action-router`](agentic-ai/text-action-router) | Conditional-edge routing with graceful handling of invalid actions |
 | [`agentic-ai/ai-business-advisor`](agentic-ai/ai-business-advisor) | Multi-step LCEL workflow: industry, business idea, analysis, structured report |
@@ -46,6 +66,7 @@ The groundwork behind them is in [`agentic-ai/agentic-ai-ollama`](agentic-ai/age
 | Project | What it shows |
 |---|---|
 | [`mlops/reproducible-ml-pipeline`](mlops/reproducible-ml-pipeline) | Artifact versioning, data validation, experiment tracking and pipeline orchestration with MLflow and Weights & Biases |
+| [`mlops/mlflow-server`](mlops/mlflow-server) | Standalone MLflow tracking server from the official Docker image, bound to localhost, data kept in `./mlruns` |
 
 ## Deep Learning (PyTorch)
 
