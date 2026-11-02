@@ -7,3 +7,9 @@ mlops/reproducible-ml-pipeline/lesson-2-data-exploration-and-preparation/demo/yd
 # Count the config files (Docker Compose, conda environments, GitHub Actions); GitHub hides YAML by default.
 *.yml linguist-detectable
 *.yaml linguist-detectable
+
+# MLflow project files are YAML without an extension
+MLproject linguist-language=YAML linguist-detectable
+
+# Python packaging config
+*.toml linguist-detectable
