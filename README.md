@@ -17,12 +17,13 @@ The groundwork behind them is in [`agentic-ai/agentic-ai-ollama`](agentic-ai/age
 
 | Area | Tools |
 |---|---|
-| Agents and LLMs | LangChain, LangGraph, LangMem, Ollama (local open-weight models, e.g. Qwen3), Tavily web search |
-| RAG and data stores | Chroma, Elasticsearch + Kibana, SQLite / SQLAlchemy, PostgreSQL (LangGraph checkpointer) |
+| Agents and LLMs | LangChain (LCEL), LangGraph, LangMem, Ollama (local open-weight models, e.g. Qwen3), Pydantic (structured output), Tavily web search |
+| RAG and data stores | Chroma, Elasticsearch + Kibana, SQLite / SQLAlchemy, PostgreSQL (LangGraph checkpointer), pypdf / fpdf2 (PDF loading and generation) |
 | Evaluation and observability | RAGAS, MLflow tracing, pytest |
-| MLOps | MLflow (projects, tracking server), Weights & Biases, Hydra, ydata-profiling, conda |
-| ML and deep learning | PyTorch, scikit-learn, pandas, NumPy, SciPy, Matplotlib, Seaborn |
-| Infrastructure | Docker, Docker Compose, GitHub Actions |
+| MLOps | MLflow (projects, tracking server), Weights & Biases, Hydra / OmegaConf, ydata-profiling, conda, JupyterLab |
+| ML and deep learning | PyTorch, Hugging Face Datasets, scikit-learn, pandas, NumPy, SciPy, Matplotlib, Seaborn |
+| Infrastructure | Docker, Docker Compose, GitHub Actions, python-dotenv (config) |
+| Development | Python, PyCharm, VS Code, Git / GitHub, Claude Code |
 
 ## Agentic AI (LangChain / LangGraph)
 
