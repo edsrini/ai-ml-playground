@@ -13,6 +13,17 @@ Two projects that show the approach best: a local model handles the language, an
 
 The groundwork behind them is in [`agentic-ai/agentic-ai-ollama`](agentic-ai/agentic-ai-ollama) (numbered LangChain / LangGraph labs) and [`mlops/reproducible-ml-pipeline`](mlops/reproducible-ml-pipeline) (data validation, artifact versioning, experiment tracking, a tagged release).
 
+## Tools used
+
+| Area | Tools |
+|---|---|
+| Agents and LLMs | LangChain, LangGraph, LangMem, Ollama (local open-weight models, e.g. Qwen3), Tavily web search |
+| RAG and data stores | Chroma, Elasticsearch + Kibana, SQLite / SQLAlchemy, PostgreSQL (LangGraph checkpointer) |
+| Evaluation and observability | RAGAS, MLflow tracing, pytest |
+| MLOps | MLflow (projects, tracking server), Weights & Biases, Hydra, ydata-profiling, conda |
+| ML and deep learning | PyTorch, scikit-learn, pandas, NumPy, SciPy, Matplotlib, Seaborn |
+| Infrastructure | Docker, Docker Compose, GitHub Actions |
+
 ## Agentic AI (LangChain / LangGraph)
 
 | Project | What it shows |
