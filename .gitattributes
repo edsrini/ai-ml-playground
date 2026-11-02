@@ -1,3 +1,9 @@
-# Leave notebooks out of GitHub's language stats.
-# A few course notebooks carry megabytes of saved profiling output, which would otherwise outweigh all the Python.
-*.ipynb linguist-vendored
+# GitHub language stats
+
+# These two course notebooks carry megabytes of saved profiling output, which would otherwise outweigh all the Python.
+mlops/reproducible-ml-pipeline/lesson-2-data-exploration-and-preparation/exercises/exercise_4/solution/EDA.ipynb linguist-vendored
+mlops/reproducible-ml-pipeline/lesson-2-data-exploration-and-preparation/demo/ydata_profiling/ydata_profiling_solution.ipynb linguist-vendored
+
+# Count the config files (Docker Compose, conda environments, GitHub Actions); GitHub hides YAML by default.
+*.yml linguist-detectable
+*.yaml linguist-detectable
